@@ -6,24 +6,24 @@ We will deploy Canonical Kubernetes, the F5 Networks Big-IP Device and the F5 k8
 
 ### Index
 
-- [Deploying Canonical Kubernetes](https://github.com/CalvinHartwel/canonical-kubernetes-f5-big-ip#deploying-canonical-kubernetes-cdk)
-- [Deploying F5 Big-IP Load-Balancer](https://github.com/CalvinHartwell/canonical-kubernetes-f5-big-ip#deploying-the-f5-big-ip-load-balancer)
-  - [Configuring the F5 Big-IP Load-Balancer](https://github.com/CalvinHartwell/canonical-kubernetes-f5-big-ip#configuring-the-f5-big-ip-load-balancer)
-  - [Removing the F5 Big-IP Load-Balancer](https://github.com/CalvinHartwell/canonical-kubernetes-f5-big-ip#removing-the-f5-big-ip-load-balancer)
-  - [Deploying the F5 Big-IP Load-Balancer Controller](https://github.com/CalvinHartwell/canonical-kubernetes-f5-big-ip#deploying-the-f5-big-ip-load-balancer-controller-on-cdk)
-- [Utilising the F5 Big-IP Load Balancer with Kubernetes](https://github.com/CalvinHartwell/canonical-kubernetes-f5-big-ip#utilising-the-f5-big-ip-load-balancer-with-kubernetes)
-  - [Removing the F5 Big-IP Controller Container](https://github.com/CalvinHartwell/canonical-kubernetes-f5-big-ip#removing-the-f5-big-ip-controller-container)
-  - [Troubleshooting](https://github.com/CalvinHartwell/canonical-kubernetes-f5-big-ip#troubleshooting-the-f5-big-ip-controller)
-- [Conclusion](https://github.com/CalvinHartwell/canonical-kubernetes-f5-big-ip#conclusion)
-  - [Software versions](https://github.com/CalvinHartwell/canonical-kubernetes-f5-big-ip#software-versions)
-  - [Getting Help & Support](https://github.com/CalvinHartwell/canonical-kubernetes-f5-big-ip#getting-help--support)
-- [Useful Links](https://github.com/CalvinHartwell/canonical-kubernetes-f5-big-ip#useful-links)
+- [Deploying Canonical Kubernetes](https://github.com/CanonicalLtd/canonical-kubernetes-third-party-integrations/tree/master/cdk-f5-bigip #deploying-canonical-kubernetes-cdk)
+- [Deploying F5 Big-IP Load-Balancer](https://github.com/CanonicalLtd/canonical-kubernetes-third-party-integrations/tree/master/cdk-f5-bigip #deploying-the-f5-big-ip-load-balancer)
+  - [Configuring the F5 Big-IP Load-Balancer](https://github.com/CanonicalLtd/canonical-kubernetes-third-party-integrations/tree/master/cdk-f5-bigip #configuring-the-f5-big-ip-load-balancer)
+  - [Removing the F5 Big-IP Load-Balancer](https://github.com/CanonicalLtd/canonical-kubernetes-third-party-integrations/tree/master/cdk-f5-bigip #removing-the-f5-big-ip-load-balancer)
+  - [Deploying the F5 Big-IP Load-Balancer Controller](https://github.com/CanonicalLtd/canonical-kubernetes-third-party-integrations/tree/master/cdk-f5-bigip #deploying-the-f5-big-ip-load-balancer-controller-on-cdk)
+- [Utilising the F5 Big-IP Load Balancer with Kubernetes](https://github.com/CanonicalLtd/canonical-kubernetes-third-party-integrations/tree/master/cdk-f5-bigip #utilising-the-f5-big-ip-load-balancer-with-kubernetes)
+  - [Removing the F5 Big-IP Controller Container](https://github.com/CanonicalLtd/canonical-kubernetes-third-party-integrations/tree/master/cdk-f5-bigip #removing-the-f5-big-ip-controller-container)
+  - [Troubleshooting](https://github.com/CanonicalLtd/canonical-kubernetes-third-party-integrations/tree/master/cdk-f5-bigip #troubleshooting-the-f5-big-ip-controller)
+- [Conclusion](https://github.com/CanonicalLtd/canonical-kubernetes-third-party-integrations/tree/master/cdk-f5-bigip #conclusion)
+  - [Software versions](https://github.com/CanonicalLtd/canonical-kubernetes-third-party-integrations/tree/master/cdk-f5-bigip #software-versions)
+  - [Getting Help & Support](https://github.com/CanonicalLtd/canonical-kubernetes-third-party-integrations/tree/master/cdk-f5-bigip #getting-help--support)
+- [Useful Links](https://github.com/CanonicalLtd/canonical-kubernetes-third-party-integrations/tree/master/cdk-f5-bigip #useful-links)
 
 ## Deploying Canonical Kubernetes (CDK)
 
 This documentation already assumes that you have Canonical Kubernetes up and running and deployed in an enivornment where you can also deploy F5 Big-IP load-balancers, either physical or virtual instances. Right now you can also do this on public clouds such as AWS if required for testing.
 
-If you need the instructions for deploying CDK, they can be found here: [https://kubernetes.io/docs/getting-started-guides/ubuntu/installation/](https://kubernetes.io/docs/getting-started-guides/ubuntu/installation/) and here [https://jujucharms.com/canonical-kubernetes/](https://jujucharms.com/canonical-kubernetes/). 
+If you need the instructions for deploying CDK, they can be found here: [https://kubernetes.io/docs/getting-started-guides/ubuntu/installation/](https://kubernetes.io/docs/getting-started-guides/ubuntu/installation/) and here [https://jujucharms.com/canonical-kubernetes/](https://jujucharms.com/canonical-kubernetes/).
 
 ## Deploying the F5 Big-IP Load-Balancer
 
@@ -92,11 +92,11 @@ It seems that the container doesn't handle anything else but 443, so it should b
   wget https://<your F5 public ip or vip>:443/ --no-check-certificate
 ```
 
-![f5 big-ip login](https://raw.githubusercontent.com/CalvinHartwell/canonical-kubernetes-f5-bigip/master/images/login.png "F5 Big-IP Login Screen")
+![f5 big-ip login](https://raw.githubusercontent.com/CanonicalLtd/canonical-kubernetes-third-party-integrations/master/cdk-f5-bigip/images/login.png "F5 Big-IP Login Screen")
 
 Enter your credentials, login and you should see this screen:
 
-![f5 big-ip gui](https://raw.githubusercontent.com/CalvinHartwell/canonical-kubernetes-f5-bigip/master/images/f5-gui.png "F5 Big-IP GUI")
+![f5 big-ip gui](https://raw.githubusercontent.com/CanonicalLtd/canonical-kubernetes-third-party-integrations/master/cdk-f5-bigip/images/f5-gui.png "F5 Big-IP GUI")
 
 There appears to be several different versions of the Big-IP appliance on AWS for different bandwidth requirements and price ranges. This example uses the cheapest option but it is possible to sign-up for a [free trial of the virtual edition](https://f5.com/products/deployment-methods/virtual-editions) if you're running on your own estate or you can use existing physical F5 hardware running Big-IP.
 
@@ -110,15 +110,15 @@ Note in the top-right handside of the F5 Load-Balancer interface it says Partiti
 
 From the default GUI page, go to System -> Users -> Partition List
 
-![f5 big-ip new partition](https://raw.githubusercontent.com/CalvinHartwell/canonical-kubernetes-f5-bigip/master/images/f5-gui-partitions.png "F5 Big-IP Partition List")
+![f5 big-ip new partition](https://raw.githubusercontent.com/CanonicalLtd/canonical-kubernetes-third-party-integrations/master/cdk-f5-bigip/images/f5-gui-partitions.png "F5 Big-IP Partition List")
 
 On the partition list, you should see 'Common', hit the Create button on the right hand side. Fill in the details for the new Partition and call it k8s:
 
-![f5 big-ip create partition](https://raw.githubusercontent.com/CalvinHartwell/canonical-kubernetes-f5-bigip/master/images/f5-gui-new-k8s-partition.png "F5 Big-IP Create Partition")
+![f5 big-ip create partition](https://raw.githubusercontent.com/CanonicalLtd/canonical-kubernetes-third-party-integrations/master/cdk-f5-bigip/images/f5-gui-new-k8s-partition.png "F5 Big-IP Create Partition")
 
 Finally hit the Finish button and we're ready to go. You should see two partitions now in the partition list. Depending on where you browse around, you can set the Partition in the top-right to k8s, which will filter your view to objects which belong to the k8s partition.
 
-![f5 big-ip partition-list](https://raw.githubusercontent.com/CalvinHartwell/canonical-kubernetes-f5-bigip/master/images/f5-gui-partition-list.png "F5 Big-IP Partition List")
+![f5 big-ip partition-list](https://raw.githubusercontent.com/CanonicalLtd/canonical-kubernetes-third-party-integrations/master/cdk-f5-bigip/images/f5-gui-partition-list.png "F5 Big-IP Partition List")
 
 ### Removing the F5 Big-IP Load-Balancer
 
@@ -135,7 +135,7 @@ Most third-party product integrations for Kubernetes are pretty transparent to t
 
 The F5 Big-IP Controller container functions like this as well. It is an open-source workload ([https://github.com/F5Networks/k8s-bigip-ctlr](https://github.com/F5Networks/k8s-bigip-ctlr)) which interacts with the Kubernetes API and the API of the Big-IP load balancer to automatically configure the load-balancer based on objects created on kubernetes:
 
-![f5 big-ip gui](https://raw.githubusercontent.com/CalvinHartwell/canonical-kubernetes-f5-bigip/master/images/f5-big-ip-k8s.png "F5 Big-IP GUI Kubernetes")
+![f5 big-ip gui](https://raw.githubusercontent.com/CanonicalLtd/canonical-kubernetes-third-party-integrations/master/cdk-f5-bigip/images/f5-big-ip-k8s.png "F5 Big-IP GUI Kubernetes")
 
 The yaml file cdk-f5-big-ip.yaml included inside this repository describes the deployment of the F5 Big-IP Controller Container on-top of CDK. The example file has been created based on documentation on F5's website: [http://clouddocs.f5.com/products/connectors/k8s-bigip-ctlr/v1.4/](http://clouddocs.f5.com/products/connectors/k8s-bigip-ctlr/v1.4/).
 
@@ -422,13 +422,13 @@ calvinh@ubuntu-ws:~$ kubectl logs  -f k8s-bigip-ctlr-68549fc7d5-v7pd9
 
 This indicates that the Big-IP controller container has picked up the ingress rule and replicated onto the load-balancer. We can check that by logging onto the F5 Load-Balancer interface and going to the virtual server list. Make sure your partition is set to k8s in the top-right hand corner, otherwise you may not be able to see the objects:
 
-![f5 big-ip k8s virtual-server](https://raw.githubusercontent.com/CalvinHartwell/canonical-kubernetes-f5-bigip/master/images/f5-virtual-server-created.png "F5 Big-IP k8s virtual server list")
+![f5 big-ip k8s virtual-server](https://raw.githubusercontent.com/CanonicalLtd/canonical-kubernetes-third-party-integrations/master/cdk-f5-bigip/images/f5-virtual-server-created.png "F5 Big-IP k8s virtual server list")
 
 As you can see, the name (ingress_10-190-25-70_80) for the newly created Virtual Server has been generated based on the IP address specified as the 'virtual-server.f5.com/ip' annotation and the servicePort which has been set to 80. If you click into the virtual server you can check that the rule matches your specification.
 
 The controller container has also created a pool list for us automatically. Using the GUI on the left-hand side, click the Pools tab and go to Pool List. You should see a newly created pool based on the name of your ingress rule:
 
-![f5 big-ip k8s pool-list](https://raw.githubusercontent.com/CalvinHartwell/canonical-kubernetes-f5-bigip/master/images/f5-gui-pool-list.png "F5 Big-IP k8s pool list")
+![f5 big-ip k8s pool-list](https://raw.githubusercontent.com/CanonicalLtd/canonical-kubernetes-third-party-integrations/master/cdk-f5-bigip/images/f5-gui-pool-list.png "F5 Big-IP k8s pool list")
 
 ### Removing the F5 Big-IP Controller Container
 
