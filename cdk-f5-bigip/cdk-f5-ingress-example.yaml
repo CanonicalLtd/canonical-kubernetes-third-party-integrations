@@ -1,0 +1,69 @@
+---
+apiVersion: extensions/v1beta1
+kind: Deployment
+metadata:
+  creationTimestamp: null
+  labels:
+    app: cdk-cats
+  name:  cdk-cats
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app:  cdk-cats
+  strategy: {}
+  template:
+    metadata:
+      creationTimestamp: null
+      labels:
+        app:  cdk-cats
+        ima: pod
+    spec:
+      containers:
+      - image: calvinhartwell/cdk-cats:latest
+        imagePullPolicy: Always
+        name: cdk-cats
+        ports:
+        - containerPort: 80
+        livenessProbe:
+          httpGet:
+            path: /
+            port: 80
+          initialDelaySeconds: 5
+          timeoutSeconds: 30
+        resources: {}
+      restartPolicy: Always
+      serviceAccountName: ""
+status: {}
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: cdk-cats
+  labels:
+    app: cdk-cats
+spec:
+  type: NodePort
+  ports:
+    - port: 80
+      targetPort: 80
+      protocol: TCP
+  selector:
+    app: cdk-cats
+---
+apiVersion: extensions/v1beta1
+kind: Ingress
+metadata:
+  name: cdk-cats
+  namespace: default
+  annotations:
+    # Provide an IP address from the external VLAN on your BIG-IP device
+    virtual-server.f5.com/ip: "10.190.25.70"
+    # Specify the BIG-IP partition containing the virtual server
+    virtual-server.f5.com/partition: "k8s"
+
+spec:
+  backend:
+    # The name of the Kubernetes Service you want to expose to external traffic
+    serviceName: cdk-cats
+    servicePort: 80
