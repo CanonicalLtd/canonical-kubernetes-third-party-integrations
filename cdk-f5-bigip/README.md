@@ -6,24 +6,24 @@ We will deploy Canonical Kubernetes, the F5 Networks Big-IP Device and the F5 k8
 
 ### Index
 
-- [Deploying Canonical Kubernetes](https://github.com/CanonicalLtd/canonical-kubernetes-third-party-integrations/tree/master/cdk-f5-bigip #deploying-canonical-kubernetes-cdk)
-- [Deploying F5 Big-IP Load-Balancer](https://github.com/CanonicalLtd/canonical-kubernetes-third-party-integrations/tree/master/cdk-f5-bigip #deploying-the-f5-big-ip-load-balancer)
-  - [Configuring the F5 Big-IP Load-Balancer](https://github.com/CanonicalLtd/canonical-kubernetes-third-party-integrations/tree/master/cdk-f5-bigip #configuring-the-f5-big-ip-load-balancer)
-  - [Removing the F5 Big-IP Load-Balancer](https://github.com/CanonicalLtd/canonical-kubernetes-third-party-integrations/tree/master/cdk-f5-bigip #removing-the-f5-big-ip-load-balancer)
-  - [Deploying the F5 Big-IP Load-Balancer Controller](https://github.com/CanonicalLtd/canonical-kubernetes-third-party-integrations/tree/master/cdk-f5-bigip #deploying-the-f5-big-ip-load-balancer-controller-on-cdk)
-- [Utilising the F5 Big-IP Load Balancer with Kubernetes](https://github.com/CanonicalLtd/canonical-kubernetes-third-party-integrations/tree/master/cdk-f5-bigip #utilising-the-f5-big-ip-load-balancer-with-kubernetes)
-  - [Removing the F5 Big-IP Controller Container](https://github.com/CanonicalLtd/canonical-kubernetes-third-party-integrations/tree/master/cdk-f5-bigip #removing-the-f5-big-ip-controller-container)
-  - [Troubleshooting](https://github.com/CanonicalLtd/canonical-kubernetes-third-party-integrations/tree/master/cdk-f5-bigip #troubleshooting-the-f5-big-ip-controller)
-- [Conclusion](https://github.com/CanonicalLtd/canonical-kubernetes-third-party-integrations/tree/master/cdk-f5-bigip #conclusion)
-  - [Software versions](https://github.com/CanonicalLtd/canonical-kubernetes-third-party-integrations/tree/master/cdk-f5-bigip #software-versions)
-  - [Getting Help & Support](https://github.com/CanonicalLtd/canonical-kubernetes-third-party-integrations/tree/master/cdk-f5-bigip #getting-help--support)
-- [Useful Links](https://github.com/CanonicalLtd/canonical-kubernetes-third-party-integrations/tree/master/cdk-f5-bigip #useful-links)
+- [Deploying Canonical Kubernetes](https://github.com/CanonicalLtd/canonical-kubernetes-third-party-integrations/tree/master/cdk-f5-bigip#deploying-canonical-kubernetes-cdk)
+- [Deploying F5 Big-IP Load-Balancer](https://github.com/CanonicalLtd/canonical-kubernetes-third-party-integrations/tree/master/cdk-f5-bigip#deploying-the-f5-big-ip-load-balancer)
+  - [Configuring the F5 Big-IP Load-Balancer](https://github.com/CanonicalLtd/canonical-kubernetes-third-party-integrations/tree/master/cdk-f5-bigip#configuring-the-f5-big-ip-load-balancer)
+  - [Removing the F5 Big-IP Load-Balancer](https://github.com/CanonicalLtd/canonical-kubernetes-third-party-integrations/tree/master/cdk-f5-bigip#removing-the-f5-big-ip-load-balancer)
+  - [Deploying the F5 Big-IP Load-Balancer Controller](https://github.com/CanonicalLtd/canonical-kubernetes-third-party-integrations/tree/master/cdk-f5-bigip#deploying-the-f5-big-ip-load-balancer-controller-on-cdk)
+- [Utilising the F5 Big-IP Load Balancer with Kubernetes](https://github.com/CanonicalLtd/canonical-kubernetes-third-party-integrations/tree/master/cdk-f5-bigip#utilising-the-f5-big-ip-load-balancer-with-kubernetes)
+  - [Removing the F5 Big-IP Controller Container](https://github.com/CanonicalLtd/canonical-kubernetes-third-party-integrations/tree/master/cdk-f5-bigip#removing-the-f5-big-ip-controller-container)
+  - [Troubleshooting](https://github.com/CanonicalLtd/canonical-kubernetes-third-party-integrations/tree/master/cdk-f5-bigip#troubleshooting-the-f5-big-ip-controller)
+- [Conclusion](https://github.com/CanonicalLtd/canonical-kubernetes-third-party-integrations/tree/master/cdk-f5-bigip#conclusion)
+  - [Software versions](https://github.com/CanonicalLtd/canonical-kubernetes-third-party-integrations/tree/master/cdk-f5-bigip#software-versions)
+  - [Getting Help & Support](https://github.com/CanonicalLtd/canonical-kubernetes-third-party-integrations/tree/master/cdk-f5-bigip#getting-help--support)
+- [Useful Links](https://github.com/CanonicalLtd/canonical-kubernetes-third-party-integrations/tree/master/cdk-f5-bigip#useful-links)
 
 ## Deploying Canonical Kubernetes (CDK)
 
 This documentation already assumes that you have Canonical Kubernetes up and running and deployed in an enivornment where you can also deploy F5 Big-IP load-balancers, either physical or virtual instances. Right now you can also do this on public clouds such as AWS if required for testing.
 
-If you need the instructions for deploying CDK, they can be found here: [https://kubernetes.io/docs/getting-started-guides/ubuntu/installation/](https://kubernetes.io/docs/getting-started-guides/ubuntu/installation/) and here [https://jujucharms.com/canonical-kubernetes/](https://jujucharms.com/canonical-kubernetes/).
+If you need the instructions for deploying CDK, they can be found here: [https://kubernetes.io/docs/getting-started-guides/ubuntu/installation/](https://kubernetes.io/docs/getting-started-guides/ubuntu/installation/) and here [https://jujucharms.com/canonical-kubernetes/](https://jujucharms.com/canonical-kubernetes).
 
 ## Deploying the F5 Big-IP Load-Balancer
 
