@@ -7,26 +7,26 @@ These steps are currently in alpha/testing phase and will most likely change.
 ### Index
 
 - [Deploying Canonical Kubernetes](https://github.com/CanonicalLtd/canonical-kubernetes-third-party-integrations/tree/master/cdk-rancher#deploying-canonical-kubernetes)
-- [Deploying Rancher](https://github.com/CanonicalLtd/canonical-kubernetes-third-party-integrations/tree/master/cdk-rancher #deploying-rancher)
-  - [Deploying Rancher with a nodeport](https://github.com/CanonicalLtd/canonical-kubernetes-third-party-integrations/tree/master/cdk-rancher #deploying-rancher-with-a-nodeport)
-  - [Deploying Rancher with an ingress rule](https://github.com/CanonicalLtd/canonical-kubernetes-third-party-integrations/tree/master/cdk-rancher #deploying-rancher-with-an-ingress-rule)
-  - [Removing Rancher](https://github.com/CanonicalLtd/canonical-kubernetes-third-party-integrations/tree/master/cdk-rancher #removing-rancher)
-- [Using Rancher](https://github.com/CanonicalLtd/canonical-kubernetes-third-party-integrations/tree/master/cdk-rancher #using-rancher)
-  - [The Rancher GUI](https://github.com/CanonicalLtd/canonical-kubernetes-third-party-integrations/tree/master/cdk-rancher #the-rancher-gui)
-  - [Deploying a Workload with Rancher](https://github.com/CanonicalLtd/canonical-kubernetes-third-party-integrations/tree/master/cdk-rancher #deploying-a-workload-with-rancher)
-  - [Deploying a Workload with Rancher Catalog](https://github.com/CanonicalLtd/canonical-kubernetes-third-party-integrations/tree/master/cdk-rancher #deploying-a-workload-with-rancher-catalog)
-  - [Adding additional Kubernetes Clusters to Rancher](https://github.com/CanonicalLtd/canonical-kubernetes-third-party-integrations/tree/master/cdk-rancher #adding-additional-kubernetes-clusters-to-rancher)
-  - [Troubleshooting Rancher](https://github.com/CanonicalLtd/canonical-kubernetes-third-party-integrations/tree/master/cdk-rancher #troubleshooting-rancher)
-- [Conclusion](https://github.com/CanonicalLtd/canonical-kubernetes-third-party-integrations/tree/master/cdk-rancher #conclusion)
-  - [Software versions](https://github.com/CanonicalLtd/canonical-kubernetes-third-party-integrations/tree/master/cdk-rancher #software-versions)
-  - [Getting Help & Support](https://github.com/CanonicalLtd/canonical-kubernetes-third-party-integrations/tree/master/cdk-rancher #getting-help--support)
-- [Useful Links](https://github.com/CanonicalLtd/canonical-kubernetes-third-party-integrations/tree/master/cdk-rancher #useful-links)
+- [Deploying Rancher](https://github.com/CanonicalLtd/canonical-kubernetes-third-party-integrations/tree/master/cdk-rancher#deploying-rancher)
+  - [Deploying Rancher with a nodeport](https://github.com/CanonicalLtd/canonical-kubernetes-third-party-integrations/tree/master/cdk-rancher#deploying-rancher-with-a-nodeport)
+  - [Deploying Rancher with an ingress rule](https://github.com/CanonicalLtd/canonical-kubernetes-third-party-integrations/tree/master/cdk-rancher#deploying-rancher-with-an-ingress-rule)
+  - [Removing Rancher](https://github.com/CanonicalLtd/canonical-kubernetes-third-party-integrations/tree/master/cdk-rancher#removing-rancher)
+- [Using Rancher](https://github.com/CanonicalLtd/canonical-kubernetes-third-party-integrations/tree/master/cdk-rancher#using-rancher)
+  - [The Rancher GUI](https://github.com/CanonicalLtd/canonical-kubernetes-third-party-integrations/tree/master/cdk-rancher#the-rancher-gui)
+  - [Deploying a Workload with Rancher](https://github.com/CanonicalLtd/canonical-kubernetes-third-party-integrations/tree/master/cdk-rancher#deploying-a-workload-with-rancher)
+  - [Deploying a Workload with Rancher Catalog](https://github.com/CanonicalLtd/canonical-kubernetes-third-party-integrations/tree/master/cdk-rancher#deploying-a-workload-with-rancher-catalog)
+  - [Adding additional Kubernetes Clusters to Rancher](https://github.com/CanonicalLtd/canonical-kubernetes-third-party-integrations/tree/master/cdk-rancher#adding-additional-kubernetes-clusters-to-rancher)
+  - [Troubleshooting Rancher](https://github.com/CanonicalLtd/canonical-kubernetes-third-party-integrations/tree/master/cdk-rancher#troubleshooting-rancher)
+- [Conclusion](https://github.com/CanonicalLtd/canonical-kubernetes-third-party-integrations/tree/master/cdk-rancher#conclusion)
+  - [Software versions](https://github.com/CanonicalLtd/canonical-kubernetes-third-party-integrations/tree/master/cdk-rancher#software-versions)
+  - [Getting Help & Support](https://github.com/CanonicalLtd/canonical-kubernetes-third-party-integrations/tree/master/cdk-rancher#getting-help--support)
+- [Useful Links](https://github.com/CanonicalLtd/canonical-kubernetes-third-party-integrations/tree/master/cdk-rancher#useful-links)
 
 ## Deploying Canonical Kubernetes
 
 This documentation already assumes that you have Canonical Kubernetes up and running and deployed in an enivornment where you can also deploy F5 Big-IP load-balancers, either physical or virtual instances. Right now you can also do this on public clouds such as AWS if required for testing.
 
-If you need the instructions for deploying CDK, they can be found here: [https://kubernetes.io/docs/getting-started-guides/ubuntu/installation/](https://kubernetes.io/docs/getting-started-guides/ubuntu/installation/) and here [https://jujucharms.com/canonical-kubernetes/](https://jujucharms.com/canonical-kubernetes/). 
+If you need the instructions for deploying CDK, they can be found here: [https://kubernetes.io/docs/getting-started-guides/ubuntu/installation/](https://kubernetes.io/docs/getting-started-guides/ubuntu/installation/) and here [https://jujucharms.com/canonical-kubernetes/](https://jujucharms.com/canonical-kubernetes/).
 
 ## Deploying Rancher
 
