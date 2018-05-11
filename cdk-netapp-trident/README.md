@@ -242,7 +242,7 @@ Sometimes the install will hang because the containers cannot mount the newly cr
 
 You can see in the picture below that the Mount Command is darked out and unavailable, this is because NetApp trident has created the storage but not actually exposed it by default through NFS, so we need to adjust it:
 
-![netapp fixing nfs](https://raw.githubusercontent.com/CanonicalLtd/canonical-kubernetes-third-party-integrations/master/cdk-netapp-trident/images/NetApp-OnCommand-CloudManagerGUI-wkenv-fix.png "NetApp Fixing NFS)
+![netapp fixing nfs](https://raw.githubusercontent.com/CanonicalLtd/canonical-kubernetes-third-party-integrations/master/cdk-netapp-trident/images/NetApp-OnCommand-CloudManagerGUI-wkenv-fix.png "NetApp Fixing NFS")
 
 The way to fix it is to hit the Edit button on the trident_trident volume. On the edit volume screen, change the Access Control settings by adding a custom export policy, this will automatically expose the volume through NFS. Now we can re-run the install, but first, we need to run the uninstall command:
 
@@ -369,7 +369,7 @@ trident                          2Gi        RWO            Retain           Boun
 
 You should be able to see this inside the CloudManager as well:
 
-![netapp mounted](https://raw.githubusercontent.com/CanonicalLtd/canonical-kubernetes-third-party-integrations/master/cdk-netapp-trident/images/NetApp-OnCommand-ontapmounted.png "NetApp Mounted)
+![netapp mounted](https://raw.githubusercontent.com/CanonicalLtd/canonical-kubernetes-third-party-integrations/master/cdk-netapp-trident/images/NetApp-OnCommand-ontapmounted.png "NetApp Mounted")
 
 If you're interested in doing some proper testing, try to deploy some containers which require PV. One example is Minio Storage, and [a demo workload exists for this here](https://github.com/CanonicalLtd/canonical-kubernetes-demos/tree/master/cdk-minio). Everytime you create a new PV it should also be created inside the NetApp cloud manager, so you can manage the volume, back it up, etc using this tool as well.  
 
