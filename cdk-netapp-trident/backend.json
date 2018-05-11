@@ -1,0 +1,10 @@
+{
+    "version": 1,
+    "storageDriverName": "ontap-nas",
+    "backendName": "cdk",
+    "managementLIF": "172.31.37.251",
+    "dataLIF": "172.31.36.9",
+    "svm": "svm_cdk",
+    "username": "admin",
+    "password": "Kubernetes123"
+}

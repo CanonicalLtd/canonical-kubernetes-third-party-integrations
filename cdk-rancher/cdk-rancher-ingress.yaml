@@ -66,12 +66,12 @@ status: {}
 ---
 apiVersion: v1
 kind: Service
-metadata: 
+metadata:
   name: rancher
   labels:
     app: rancher
-spec: 
-  ports: 
+spec:
+  ports:
     - port: 443
       targetPort: 443
       protocol: TCP
@@ -88,12 +88,12 @@ metadata:
 spec:
  tls:
    - hosts:
-     - rancher.34.244.118.135.xip.io
+     - rancher.35.177.5.47.xip.io
  rules:
-   - host: rancher.34.244.118.135.xip.io
+   - host: rancher.35.177.5.47.xip.io
      http:
        paths:
          - path: /
-           backend: 
+           backend:
              serviceName: rancher
              servicePort: 443

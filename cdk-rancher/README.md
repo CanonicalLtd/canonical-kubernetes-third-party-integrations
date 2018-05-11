@@ -1,8 +1,6 @@
 # Canonical Kubernetes with Rancher (cdk-rancher)
 
-This repository explains how to deploy Rancher 2.0alpha on Canonical Kubernetes.
-
-These steps are currently in alpha/testing phase and will most likely change.
+This repository explains how to deploy Rancher 2.0 GA release on Canonical Kubernetes. Rancher 2.0 is now out and fully supported.
 
 ### Index
 
@@ -24,9 +22,18 @@ These steps are currently in alpha/testing phase and will most likely change.
 
 ## Deploying Canonical Kubernetes
 
-This documentation already assumes that you have Canonical Kubernetes up and running and deployed in an enivornment where you can also deploy F5 Big-IP load-balancers, either physical or virtual instances. Right now you can also do this on public clouds such as AWS if required for testing.
+This documentation already assumes that you have Canonical Kubernetes up and running. Right now you can also do this on public clouds such as AWS if required for testing. You can deploy CDK using Juju or Conjure-up.
 
-If you need the instructions for deploying CDK, they can be found here: [https://kubernetes.io/docs/getting-started-guides/ubuntu/installation/](https://kubernetes.io/docs/getting-started-guides/ubuntu/installation/) and here [https://jujucharms.com/canonical-kubernetes/](https://jujucharms.com/canonical-kubernetes/).
+If you need the instructions for deploying CDK, they can be found here: [https://kubernetes.io/docs/getting-started-guides/ubuntu/installation/](https://kubernetes.io/docs/getting-started-guides/ubuntu/installation/) and here [https://jujucharms.com/canonical-kubernetes/](https://jujucharms.com/canonical-kubernetes/). There are also instructions in the Canonical Kubernetes Demos repository for deploying CDK on AWS or Azure.
+
+* Note: Once you have CDK deployed, you need to enable the following to deploy Rancher, once enabled this will allow Rancher to elevate its privileges to manage the cluster:  
+
+```
+juju config kubernetes-worker allow-privileged=true
+juju config kubernetes-master allow-privileged=true
+```
+
+After Rancher is deployed, you should be able to disable these settings as they allow containers to run with root permissions. After you enable them give Juju about 30 seconds to perform the configuration.
 
 ## Deploying Rancher
 
@@ -303,9 +310,24 @@ If is possible to check the Rancher logs using the following command:
   kubectl logs -f $(kubectl get po | grep rancher | cut -d ' ' -f1)
 ```
 
+If you see an error like this after deployment:
+
+```
+Exit status 1, namespace "cattle-system" configured serviceaccount "cattle" unchanged clusterrolebinding "cattle" configured secret "cattle-credentials-4380b02" unchanged deployment "cattle-cluster-agent" unchanged The DaemonSet "cattle-node-agent" is invalid: spec.template.spec.containers[0].securityContext.privileged: Forbidden: disallowed by cluster policy
+```
+
+Its because you didn't increase the permissions of containers before deployment:
+
+```
+juju config kubernetes-worker allow-privileged=true
+juju config kubernetes-master allow-privileged=true
+```
+
+You will either need to clear everything Rancher related from your cluster and etcd database or redeploy the entire cluster again to fix this issue.
+
 ## Conclusion
 
-This documentation has explained how to configure and deploy Canonical Kubernetes with Rancher running on top. It also provided a short introduction on how to use Rancher to control and manage Canonical Kubernetes. Note that this documentation was written at the time of the Rancher 2.0 alpha but a beta release is due out very soon which would be a better release candidate for a production environment.
+This documentation has explained how to configure and deploy Canonical Kubernetes with Rancher running on top. It also provided a short introduction on how to use Rancher to control and manage Canonical Kubernetes. This documentation has been updated for the Rancher 2.0 GA Release (April/May 2018).
 
 ### Software Versions
 
