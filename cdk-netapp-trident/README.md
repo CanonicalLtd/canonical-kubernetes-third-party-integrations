@@ -44,7 +44,7 @@ Next we select a location. My cluster is in eu-west-1, Ireland, so I will select
 
 ![netapp cloud location](https://raw.githubusercontent.com/CanonicalLtd/canonical-kubernetes-third-party-integrations/master/cdk-netapp-trident/images/NetApp-OnCommand-CloudManagerGUI-Location.png "NetApp Cloud Create Location")
 
-The next option allows you to enable encryption out of the box for your storage. This is quite useful, especially if you need to meet GDPR requirements. However, for this configuration I do not enable the encyrption, so I selected the None option:
+The next option allows you to enable encryption out of the box for your storage. This is quite useful, especially if you need to meet GDPR requirements. However, for this configuration I do not enable the encryption, so I selected the None option:
 
 ![netapp cloud encryption](https://raw.githubusercontent.com/CanonicalLtd/canonical-kubernetes-third-party-integrations/master/cdk-netapp-trident/images/NetApp-OnCommand-CloudManagerGUI-Encryption.png "NetApp Cloud Create Encryption")
 
@@ -52,7 +52,7 @@ The next stage asks you if you'd like to use your existing OnTAP Licence with th
 
 ![netapp cloud licence](https://raw.githubusercontent.com/CanonicalLtd/canonical-kubernetes-third-party-integrations/master/cdk-netapp-trident/images/NetApp-OnCommand-CloudManager-Licence.png "NetApp Cloud Create Licence")
 
-The next section asks you about support credentials. If you don't have any you can skip this section and leave the options blank. The next section is where you create the volume. You can set the details of the volume, its name, size, protocol, you can even set thin provisioning, deduplication and compression here. I gave the volume the name cdkontap with a size of 200GB and the protocol NFS, the other options I left to the default options:
+The next section asks you about support credentials. If you don't have any you can skip this section and leave the options blank. The next section is where you create the volume. You can set the details of the volume, its name, size, protocol, you can even set thin provisioning, de-duplication and compression here. I gave the volume the name cdkontap with a size of 200GB and the protocol NFS, the other options I left to the default options:
 
 ![netapp cloud Volume](https://raw.githubusercontent.com/CanonicalLtd/canonical-kubernetes-third-party-integrations/master/cdk-netapp-trident/images/NetApp-OnCommand-CloudManagerGUI-CreateVolume.png "NetApp Cloud Create Volume")
 
@@ -64,7 +64,7 @@ The next stage will take up to 25 minutes as it provisions and automatically con
 
 ![netapp cloud Deploying](https://raw.githubusercontent.com/CanonicalLtd/canonical-kubernetes-third-party-integrations/master/cdk-netapp-trident/images/NetApp-OnCommand-CloudManagerGUI-Deploying.png "NetApp Cloud Deploying OnTAP")
 
-While your waiting, you can move onto the Deploying NetApp Trident section in preperation for integrating Canonical Kubernetes and the storage. Eventually you should side a screen like this:
+While your waiting, you can move onto the Deploying NetApp Trident section in preparation for integrating Canonical Kubernetes and the storage. Eventually you should side a screen like this:
 
 ![netapp cloud wkenv](https://raw.githubusercontent.com/CanonicalLtd/canonical-kubernetes-third-party-integrations/master/cdk-netapp-trident/images/NetApp-OnCommand-CloudManagerGUI-wkenv.png "NetApp Cloud Working Environment")
 
@@ -76,7 +76,7 @@ If you want to assign a public IP to your newly provisioned storage, head on ove
 
 ![netapp accessing ontap](https://raw.githubusercontent.com/CanonicalLtd/canonical-kubernetes-third-party-integrations/master/cdk-netapp-trident/images/NetApp-accessing-OnTap.png "NetApp Accessing OnTAP")
 
-If you right click the instance with the name of your storage backend, hit Networking and then go to Manage IP addresses. From here, you can see that the instance has two networking interfaces. One is for Management of the storage which we will connect to through SSH, the other interface is used for Cluster Management, Inter-cluster Communication and for the Data Network, but it has 4 IP addresses and we are not sure which one is used for which purpose.
+If you right click the instance with the name of your storage back-end, hit Networking and then go to Manage IP addresses. From here, you can see that the instance has two networking interfaces. One is for Management of the storage which we will connect to through SSH, the other interface is used for Cluster Management, Inter-cluster Communication and for the Data Network, but it has 4 IP addresses and we are not sure which one is used for which purpose.
 
 To find out which one we should use, we will SSH to the instance and use the NetApp CLI tool to interact with it. You can either SSH onto a node on the same network, I.E:
 
@@ -227,16 +227,16 @@ INFO Controller serial numbers.                    serialNumbers=902836568038287
 WARN Aggregate has unknown media type.             aggregate=aggr1 mediaType=vmdisk
 INFO Storage driver loaded.                        driver=ontap-nas
 INFO Starting Trident installation.                namespace=default
-INFO Created service account.                     
-INFO Created cluster role.                        
-INFO Created cluster role binding.                
-INFO Created PVC.                                 
+INFO Created service account.
+INFO Created cluster role.
+INFO Created cluster role binding.
+INFO Created PVC.
 INFO Created PV.                                   pv=trident
 INFO Waiting for PVC to be bound.                  pvc=trident
-INFO Created Trident deployment.       
+INFO Created Trident deployment.
 ```
 
-Sometimes the install will hang because the containers cannot mount the newly created NFS volume it created because it is not exposed by NFS by default. In order to fix this, go back to the NetApp cloud manager web interface, go to Workign Environments -> your environment (in my case, CDK). You should see who new volumes here, one called trident_trident.
+Sometimes the install will hang because the containers cannot mount the newly created NFS volume it created because it is not exposed by NFS by default. In order to fix this, go back to the NetApp cloud manager web interface, go to Working Environments -> your environment (in my case, CDK). You should see who new volumes here, one called trident_trident.
 
 ![netapp missing env issue](https://raw.githubusercontent.com/CanonicalLtd/canonical-kubernetes-third-party-integrations/master/cdk-netapp-trident/images/NetApp-OnCommand-CloudManagerGUI-wkenv-NOMOUNT.png "NetApp No NFS Issue")
 
@@ -248,12 +248,12 @@ The way to fix it is to hit the Edit button on the trident_trident volume. On th
 
 ```
 ubuntu@ip-172-31-20-236:~/trident-installer$ ./tridentctl uninstall
-INFO Deleted Trident deployment.                  
-INFO Deleted cluster role binding.                
-INFO Deleted cluster role.                        
-INFO Deleted service account.                     
+INFO Deleted Trident deployment.
+INFO Deleted cluster role binding.
+INFO Deleted cluster role.
+INFO Deleted service account.
 INFO The uninstaller did not delete the Trident's namespace, PVC, and PV in case they are going to be reused. Please use the --all option if you need the PVC and PV deleted.
-INFO Trident uninstallation succeeded.      
+INFO Trident uninstallation succeeded.
 ```
 
 And then re-run the installer:
@@ -262,16 +262,16 @@ And then re-run the installer:
 ubuntu@ip-172-31-20-236:~/trident-installer$ ./tridentctl install
 WARN For maximum security, we recommend running Trident in its own namespace.  example="./tridentctl install -n trident"
 INFO Starting Trident installation.                namespace=default
-INFO Created service account.                     
-INFO Created cluster role.                        
-INFO Created cluster role binding.                
-INFO Created Trident deployment.                  
-INFO Waiting for Trident pod to start.            
+INFO Created service account.
+INFO Created cluster role.
+INFO Created cluster role binding.
+INFO Created Trident deployment.
+INFO Waiting for Trident pod to start.
 INFO Trident pod started.                          namespace=default pod=trident-5fd99d494d-ts8wx
-INFO Waiting for Trident REST interface.          
+INFO Waiting for Trident REST interface.
 INFO Trident REST interface is up.                 version=18.04.0
-INFO Trident installation succeeded.    
-```   
+INFO Trident installation succeeded.
+```
 
 After the installation, we need to run another command to allow us to use the storage for our own containers. The first install command just setups the trident container (similar to the Tiller in Helm), the second is used to setup a backend storage mechanism for us to use with our regular containers:
 
@@ -297,13 +297,13 @@ If for any reason you wish to remove Trident from your kubernetes cluster, just 
 
 ```
 ubuntu@ip-172-31-20-236:~/trident-installer$ ./tridentctl uninstall
-INFO Deleted Trident deployment.                  
-INFO Deleted cluster role binding.                
-INFO Deleted cluster role.                        
-INFO Deleted service account.                     
+INFO Deleted Trident deployment.
+INFO Deleted cluster role binding.
+INFO Deleted cluster role.
+INFO Deleted service account.
 INFO The uninstaller did not delete the Trident's namespace, PVC, and PV in case they are going to be reused. Please use the --all option if you need the PVC and PV deleted.
-INFO Trident uninstallation succeeded.  
-```    
+INFO Trident uninstallation succeeded.
+```
 
 ## Testing our Storage on Kubernetes
 
@@ -364,16 +364,18 @@ trident            Bound     trident                          2Gi        RWO    
 ubuntu@ip-172-31-20-236:~/trident-installer$ kubectl get pv
 NAME                             CAPACITY   ACCESS MODES   RECLAIM POLICY   STATUS    CLAIM                      STORAGECLASS   REASON    AGE
 default-netapp-ontap-pvc-4372b   2Gi        RWO            Delete           Bound     default/netapp-ontap-pvc   default                  1m
-trident                          2Gi        RWO            Retain           Bound     default/trident  
+trident                          2Gi        RWO            Retain           Bound     default/trident
 ```
 
 You should be able to see this inside the CloudManager as well:
 
 ![netapp mounted](https://raw.githubusercontent.com/CanonicalLtd/canonical-kubernetes-third-party-integrations/master/cdk-netapp-trident/images/NetApp-OnCommand-ontapmounted.png "NetApp Mounted")
 
-If you're interested in doing some proper testing, try to deploy some containers which require PV. One example is Minio Storage, and [a demo workload exists for this here](https://github.com/CanonicalLtd/canonical-kubernetes-demos/tree/master/cdk-minio). Everytime you create a new PV it should also be created inside the NetApp cloud manager, so you can manage the volume, back it up, etc using this tool as well.  
+If you're interested in doing some proper testing, try to deploy some containers which require PV. One example is Minio Storage, and [a demo workload exists for this here](https://github.com/CanonicalLtd/canonical-kubernetes-demos/tree/master/cdk-minio). Every time you create a new PV it should also be created inside the NetApp cloud manager, so you can manage the volume, back it up, etc using this tool as well.
 
 ## Known Issues and Workarounds
+
+There is currently a problem with Trident during installation when it creates its initial volume, this has been described in more detail as part of the deploying Trident section, but a bug is also open for this here: [https://github.com/NetApp/trident/issues/124](https://github.com/NetApp/trident/issues/124).
 
 If you're seeing an error within the NetApp Cloud Manager that a stack already exists even though it is deleted it is most likely because it still exists in CloudFormation. Go to CloudFormation and delete the stack to remove the error:
 
@@ -408,5 +410,5 @@ If you find issues or bugs with Trident, you should raise a support tick on the 
 - [https://media.readthedocs.org/pdf/netapp-trident/stable-v18.04/netapp-trident.pdf](https://media.readthedocs.org/pdf/netapp-trident/stable-v18.04/netapp-trident.pdf)
 - [https://netapp.io/2016/12/23/introducing-trident-dynamic-persistent-volume-provisioner-kubernetes/](https://netapp.io/2016/12/23/introducing-trident-dynamic-persistent-volume-provisioner-kubernetes/)
 - [https://netapp.io/2017/03/21/trident-part-2-installing-and-configuring-trident/](https://netapp.io/2017/03/21/trident-part-2-installing-and-configuring-trident/)
--[Using NetApp OnTAP with OpenShift and Kubernetes](http://www.dburkland.com/how-to-deploy-kubernetes-with-netapp-trident-persistent-storage/) -[Netapp Tridnet Manual with OnTAP](https://netapp-trident.readthedocs.io/en/stable-v18.04/kubernetes/operations/tasks/backends/ontap.html#ontap-nas-and-ontap-nas-economy)
+-[Using NetApp OnTAP with OpenShift and Kubernetes](http://www.dburkland.com/how-to-deploy-kubernetes-with-netapp-trident-persistent-storage/) -[Netapp Trident Manual with OnTAP](https://netapp-trident.readthedocs.io/en/stable-v18.04/kubernetes/operations/tasks/backends/ontap.html#ontap-nas-and-ontap-nas-economy)
 - [https://www.youtube.com/watch?v=Epz3N-VFKRY](https://www.youtube.com/watch?v=Epz3N-VFKRY)
