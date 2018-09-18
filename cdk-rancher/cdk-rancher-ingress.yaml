@@ -88,9 +88,9 @@ metadata:
 spec:
  tls:
    - hosts:
-     - rancher.35.177.5.47.xip.io
+     - 54.154.155.60.xip.io
  rules:
-   - host: rancher.35.177.5.47.xip.io
+   - host: 54.154.155.60.xip.io
      http:
        paths:
          - path: /
