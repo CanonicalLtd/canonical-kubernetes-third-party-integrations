@@ -26,11 +26,17 @@ This documentation already assumes that you have Canonical Kubernetes up and run
 
 If you need the instructions for deploying CDK, they can be found here: [https://kubernetes.io/docs/getting-started-guides/ubuntu/installation/](https://kubernetes.io/docs/getting-started-guides/ubuntu/installation/) and here [https://jujucharms.com/canonical-kubernetes/](https://jujucharms.com/canonical-kubernetes/). There are also instructions in the Canonical Kubernetes Demos repository for deploying CDK on AWS or Azure.
 
-* Note: Once you have CDK deployed, you need to enable the following to deploy Rancher, once enabled this will allow Rancher to elevate its privileges to manage the cluster:  
+Note: Once you have CDK deployed, you need to enable the following to deploy Rancher, once enabled this will allow Rancher to elevate its privileges to manage the cluster:  
 
 ```
 juju config kubernetes-worker allow-privileged=true
 juju config kubernetes-master allow-privileged=true
+```
+
+It is also recommended that you enable RBAC (role-based access control) as part of the deployment for added security:
+
+```
+juju config kubernetes-master authorization-mode="RBAC,Node"
 ```
 
 After Rancher is deployed, you should be able to disable these settings as they allow containers to run with root permissions. After you enable them give Juju about 30 seconds to perform the configuration.

@@ -48,7 +48,7 @@ spec:
         app: rancher
     spec:
       containers:
-      - image: rancher/rancher:latest
+      - image: rancher/rancher:stable
         imagePullPolicy: Always
         name: rancher
         ports:
