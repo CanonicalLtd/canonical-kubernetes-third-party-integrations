@@ -1,4 +1,4 @@
-# Canonical Kubernetes with Aqua Container Security Platform by Aqua Security
+# Canonical Kubernetes with Aqua Container Security Platform
 
 Aqua Container Security Platform has been tested and verified to work with Canonical Kubernetes and Ubuntu 18.04 LTS or 16.04 LTS.
 
